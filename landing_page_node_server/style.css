@@ -1,0 +1,29 @@
+h1 {
+    color: red;
+}
+
+h3 {
+    color: green;
+    font-style: italic;
+    font-family: monospace;
+}
+
+form {
+    font-family: monospace;
+}
+
+#success {
+    text-align: center;
+    color: gray;
+    font-family: monospace;
+    margin: auto;
+}
+
+/* yellow {
+    height: 5rem;
+    width: 5rem;
+    background-color: yellow;
+    border: 1px solid yellow;
+    border-radius: 3rem;
+}
+ */

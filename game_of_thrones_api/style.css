@@ -1,0 +1,33 @@
+#baratheon {
+    height:10rem; 
+    /* width:10rem;  */
+    background-image:url('img/baratheon.png');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+#lannister {
+    height:10rem; 
+    /* width:10rem;  */
+    background-image:url('img/lannister.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+#stark {
+    height:10rem; 
+    /* width:10rem;  */
+    background-image:url('img/stark.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+#targaryen {
+    height:10rem; 
+    /* width:10rem;  */
+    background-image:url('img/targaryen.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+

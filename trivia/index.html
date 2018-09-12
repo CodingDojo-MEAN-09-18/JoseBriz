@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia Game!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row d-block">
+            <h1 class="text-center display-4">TRIVIA GAME!!!</h1>
+            <p class="text-center">Press a difficulty level to get a question</p>
+            <div id="points"><p>Your points:</p><p id="point_total"></p></div>
+        </div>
+        <div class="row d-flex justify-content-around">
+            <div class="column bg-success flex-grow-1 m-3 p-3 rounded">
+                <a href="easy" data-id="easy">
+                    <h4 class="text-white text-center">Easy</h4>
+                </a>
+            </div>
+            <div class="column bg-warning flex-grow-1 m-3 p-3 rounded">
+                <a href="medium" data-id="medium">
+                    <h4 class="text-white text-center">Medium</h4>
+                </a>
+            </div>
+            <div class="column bg-danger flex-grow-1 m-3 p-3 rounded">
+                <a href="hard" data-id="hard">
+                    <h4 class="text-white text-center">Hard</h4>
+                </a>
+            </div>
+        </div>
+        <div class="row m-3 p-3">
+            <div class="col">
+                <div id="placeholder" class="d-flex justify-content-center"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
