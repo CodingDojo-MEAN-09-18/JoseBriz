@@ -18,9 +18,23 @@
 <body>
     <div class="container">
         <div class="row">
+            <h1>CREATE NEW</h1>
+        </div>
+        <div class="row">
             <div class="col">
-                <h1>CREATE NEW</h1>
+                <form>
+                    <div class="form-group">
+                        <h3 class="form-group mb-0">Car or Cat?</h3>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" name="type" value="Car">Car<br>
+                            <input type="checkbox" class="form-check-input" name="type" value="Cat">Cat<br>
+                        </div>
+                        <textarea name="description" rows="10" cols="50">Description...</textarea><br>  
+                        <button id="button">Create</button>
+                    </div>
+                </form>
             </div>
+            <div class="col"><img src="/images/new.jpg"></div>
             <div class="col-1">
                 <ul class="nav flex-column">
                     <li class="nav-item">
