@@ -57,7 +57,7 @@ var server = http.createServer(function (request, response){
     // for image files
     else if(request.url.startsWith('/images')) {
         return fs.readFile('.'+request.url, function (errors, contents){
-            response.writeHead(200, {'Content-Type': ['image/jpg', 'image/jpeg']});
+            response.writeHead(200, {'Content-Type': ['image/jpg', 'image/jpeg', 'images/png']});
             response.write(contents); 
             response.end();
         });
