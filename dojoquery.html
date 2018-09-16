@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DojoQuery</title>
+</head>
+<body>
+    <button id="clicker">Click here</button>
+    <button id="hoverer">Hover here</button>
+</body>
+<script>
+
+//return the objects
+function $Dojo(element) {
+    const which = document.getElementById(element);
+    return which;
+};
+
+console.log($Dojo('clicker'));
+console.log($Dojo('hoverer'));
+
+
+
+(function click() {
+    this.addEventListener('click',()=>{
+        console.log('this was clicked!');
+    });
+}());
+
+(function hover() {
+    this.addEventListener('mouseover',()=>{
+        console.log('mouse in');
+    });
+    this.addEventListener('mouseout',()=>{
+        console.log('mouse out');
+    });
+}());
+
+
+// $Dojo("clicker").click(function() { console.log("The button was clicked!") });
+// $Dojo("hoverer").hover(function() { console.log("The button was hovered on!") }); 
+</script>
+</html>
+
