@@ -1,0 +1,30 @@
+input[name="city"] {
+    width: 25rem;
+    border-color: black;
+}
+
+input[type="submit"] {
+    font-family: monospace;
+    font-size: 0.8em;
+}
+
+#wea_data {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+h2 {
+    font-size: 0.8em;
+}
+h1, h2{
+    display: inline;
+}
+
+li {
+    display: inline-block;
+    text-transform: capitalize;
+}
