@@ -6,6 +6,7 @@ const port = process.env.PORT || 8000;
 const app = express();
 
 app.use(express.static('views'));
+app.use('/cars', express.static('views'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -21,7 +22,7 @@ app.get('/cars', (request, response) => {
 app.get('/cats', (request, response) => {
     response.render('cats');
 });
-app.get('/new', (request, response) => {
+app.get('/cars/new', (request, response) => {
     response.render('new');
 });
 
