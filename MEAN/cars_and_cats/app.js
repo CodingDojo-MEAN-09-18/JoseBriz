@@ -2,7 +2,7 @@
 var http = require('http'),
     fs = require('fs'),
     path = require('path'),
-    url = require('url');
+    url = require('url'),
     imageDir = '/images';
 
 // create server listening on port 7077

@@ -1,0 +1,9 @@
+img {
+    height: 100px;
+}
+
+#frontpage {
+    background-image: url('../images/jeep_trailcat_concept_5.jpeg');
+    height: 500px;
+    background-repeat: no-repeat;
+}

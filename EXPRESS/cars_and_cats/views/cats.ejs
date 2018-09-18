@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cars and Cats</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- own css file -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- own js file -->
+    <script type="text/javascript" src="scripts/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Cats Live Here</h1>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div id="cats"></div>
+            </div>
+            <div class="col-1">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cars">Cars</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cats">Cats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/new">New</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    for (let i = 0 ; i < 15; i++) {
+        html_str = `
+                    <img src="images/cats/cat${i+1}.jpg" alt="cat${i+1}">
+        `
+        $('#cats').append(html_str)
+    }
+</script>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "cars_and_cats",
+  "version": "1.0.0",
+  "description": "first express assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "serve",
+    "static",
+    "content"
+  ],
+  "author": "josebriz",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
