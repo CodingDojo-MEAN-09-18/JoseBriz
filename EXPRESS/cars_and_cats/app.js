@@ -26,8 +26,7 @@ app.get('/cats', (request, response) => {
     response.render('cats');
 });
 app.get('/cats/:cat_id', (request, response) => {
-    const cat_id = request.params;
-    console.log(cat_id);
+    console.log(request.params);
     const which = (request.params.cat_id - 1);
     console.log(cats[which])
     const cat = cats[which];
