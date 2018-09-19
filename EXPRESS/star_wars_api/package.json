@@ -1,0 +1,25 @@
+{
+  "name": "star_wars_api",
+  "version": "1.0.0",
+  "description": "API requests from server, recursive programming. To make requests from our server to different servers, we can use the Axios package, this is a good one because it uses promises",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "api",
+    "server",
+    "requests",
+    "recursive",
+    "programming"
+  ],
+  "author": "josebriz",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
