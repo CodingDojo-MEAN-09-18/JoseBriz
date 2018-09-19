@@ -1,0 +1,17 @@
+* {
+    color: yellow;
+}
+body {
+    background-image: url('/images/galaxy.jpg');
+}
+.btn-secondary {
+    margin: 1rem;
+    border-color: yellow;
+    color: yellow;
+}
+#apiData {
+    column-count: 5;
+}
+#placeholder li {
+    list-style-type: none;
+}

@@ -18,13 +18,11 @@ let results={};
 
 app.get('/result', (req,res) => {
   console.log(results);
-  // const result = results
   res.render('results', {name:results.name, location:results.location, language:results.language, comment:results.comment});
 });
 
 app.post('/process', (req,res) => {
   console.log(req.body);
-  // results.push(req.body);
   results = req.body;
   res.redirect('/result');  	
 });
