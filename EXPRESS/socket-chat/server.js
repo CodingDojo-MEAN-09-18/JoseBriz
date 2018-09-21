@@ -5,7 +5,8 @@ const color = require('colors');
 const port = process.env.PORT || 8000;
 const app = express();
 
-const users = [];
+let users = [];
+let chats = [];
 
 app
   .set('views', path.join(__dirname, 'views'))
@@ -19,7 +20,6 @@ app.get('/', (request, response) => {
     response.render('index', users);
 })
 
-
 const server = app.listen(port, () => {
     console.log(`listening on port ${port}`);
 });
@@ -27,16 +27,51 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 io.on('connection', socket => {
-    console.log('user connection detected, these are the logged users', users);
+    console.log('user connection detected, these are the logged users', color.red(users));
     
     socket.on('new_user_joins', (user) => {
-        users[users.length] = ({name:user, id:users.length});
-        // console.log(color.yellow(users), color.red(users.length));
+        users[users.length] = ({name:user, id:createId(user)});
+        console.log(color.yellow(users), color.red(users.length));
         io.emit('new_user_event', users[users.length-1]);
-        socket.emit('you_joined', users);
+        socket.emit('you_joined', users, chats);
+    });
+
+    socket.on('chat_entry', (entry) => {
+        console.log('new chat', entry);
+        chats[chats.length] = (entry)
+        console.log(chats);
+        io.emit('chat_entry', entry);
     })
 
+    socket.on('leaving_chatroom', (user) => {
+        console.log('leaving_chatroom', color.blue(user));
+        socket.emit('goodbye');
+        filterUser(user);
+        io.emit('user_out', user)
+
+    });
+
 });
+
+function createId(name) {
+    const number = Math.floor(Math.random() * Math.floor(1000));
+    const user_id = name + number;
+    console.log(color.magenta(user_id));
+    return user_id
+}
+
+
+function filterUser(which) {
+    const new_arr = [];
+    for (const user of users) {
+        if(user.id != which) {
+            new_arr.push(user);
+        };
+    };
+    users = new_arr;
+};
+
+
 
 
 
