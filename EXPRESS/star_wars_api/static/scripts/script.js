@@ -1,5 +1,8 @@
 $(document).ready(function(){
+    let search = '';
     $('#peopleBtn').click(function(){
+        search = 'people';
+        $('#placeholder').empty();
         //request over to our own server for handling
         $.ajax({
             url:'/people',
@@ -15,6 +18,9 @@ $(document).ready(function(){
         return false
     });
     $('#planetsBtn').click(function(){
+        search = 'planets'
+        $('#placeholder').empty();
+        // console.log($('#placeholder')[0].childElementCount)
         //request over to our own server for handling
         $.ajax({
             url:'/planets',
@@ -25,8 +31,19 @@ $(document).ready(function(){
             let planets = data.results;
             for (planet of planets) {
                 $('#placeholder').append(`<li>${planet.name}</li>`);
+                // console.log($('#placeholder')[0].childElementCount)
+
             };
             }});
         return false
     });
+    $('#placeholder')[0].onchange = ()=>{
+        // let count = $('#placeholder')[0].childElementCount;
+        console.log('change noted');
+        // return count 
+    };
+    const target = $('#placeholder')[0].childElementCount;
+    
+    // if $('#placeholder')[0].childElementCount) === 0
+    $('.navigation').toggle();
 });

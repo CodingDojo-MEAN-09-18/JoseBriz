@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.get('/', (req,res) => { 
   res.render('index');
 });  
+
 app.get('/people', (req,res) => {
   axios.get('https://swapi.co/api/people')
   .then((data) => {

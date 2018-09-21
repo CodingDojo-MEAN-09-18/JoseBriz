@@ -20,7 +20,7 @@
         <div class="row">
             <h1>In a galaxy far, far away...</h1>
         </div>
-        <div class="row">
+        <div id="buttons" class="row">
             <div class="col d-flex justify-content-around">
                 <form action="/people">
                     <button id="peopleBtn" class="btn btn-secondary btn-lg">People</button>
@@ -31,8 +31,15 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div id="apiData" class="col">
+            <div id="apiData" class="col d-flex justify-content-center">
                 <ul id="placeholder"></ul>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col d-flex justify-content-around">
+                <a class="navigation" href=""><p>Prev</p></a>
+                <a class="navigation" href=""><p>Get All</p></a>
+                <a class="navigation" href=""><p>Next</p></a>
             </div>
         </div>
     </div>

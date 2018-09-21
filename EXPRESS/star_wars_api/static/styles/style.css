@@ -10,8 +10,11 @@ body {
     color: yellow;
 }
 #apiData {
-    column-count: 5;
+    height: 250px;
+    /* column-count: 5; */
+    overflow: auto;
 }
 #placeholder li {
     list-style-type: none;
+    font-size: 2em;
 }
