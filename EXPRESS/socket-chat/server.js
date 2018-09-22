@@ -70,8 +70,9 @@ io.on('connection', socket => {
 
     socket.on('disconnect', () => {
         console.log(socket.id + " disconnected!!");
-        removeUser(socket.id);
+        delete users[socket.id];
         io.emit('disconnection', socket.id);
+        return users;
     })
 
 });

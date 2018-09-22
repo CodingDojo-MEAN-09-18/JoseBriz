@@ -10,7 +10,7 @@ $(document).ready(() => {
             const chat_head = `<p>Hello ${user}!</p>`
             $('#chat_head').empty()
             $('#chat_head').append(chat_head);
-            $('#chat_head').append('<button id="leave_chatroom" class="btn btn-danger">Leave</button>');
+            // $('#chat_head').append('<button id="leave_chatroom" class="btn btn-danger">Leave</button>');
             const chat_room = `<div id="chatRoom" class="col"></p></div>`
             $('#rightCol').append(chat_room);
             socket.emit('new_user_joins', user);
