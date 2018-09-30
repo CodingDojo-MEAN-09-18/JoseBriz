@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quoting Dojo</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- own css file -->
+    <link rel="stylesheet" href="/styles/style.css">
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- own js file -->
+    <script type="text/javascript" src="/scripts/script.js"></script>
+</head>
+<body class='container'>
+    <div class="row d-flex justify-content-end">
+        <nav>
+            <a href="/"><button class="btn btn-outline-primary">Enter New Quote</button></a>
+        </nav>
+    </div>
+    <div class="row">
+        <h1>Yall's Quotes</h1>
+    </div>
+    <div class="row d-block">
+            <% for (quote of quotes) { %>
+                <div class="d-flex block">
+                    <p>"<%= quote.quote%>"</p>
+                    <p>-<%= quote.name%></p>
+                </div>
+            <% } %>
+    </div>
+</body>
+</html>
