@@ -29,6 +29,7 @@
                 <div class="d-flex block">
                     <p>"<%= quote.quote%>"</p>
                     <p>-<%= quote.name%></p>
+                    <p>-on <%= new Date(quote.created_at).toLocaleString() %></p>
                 </div>
             <% } %>
     </div>

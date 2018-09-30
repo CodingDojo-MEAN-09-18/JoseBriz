@@ -37,7 +37,7 @@ const quoteSchema = new Schema({
         required: [true, 'Please enter a quote'],
         minlength: [10, 'Make your quote longer than 10 characters'],
     },
-});
+}, {timestamps: {createdAt: 'created_at', updatedAt: false}});
 const Quote = mongoose.model('Quote', quoteSchema);
 //routing
 app.get('/', (request,response) => {
@@ -57,10 +57,15 @@ app.post('/quotes', (request,response) => {
         })
 });
 app.get('/quotes', (request,response) => {
-    Quote.find({})
+    Quote.find({}).sort('-created_at')
         .then((quotes_db) => {
             const quotes = quotes_db;
             response.render('quotes', {quotes});
+        })
+        .catch(error=> {
+            for (let key in error.errors) {
+                console.log(error.errors[key].message);
+            }
         })
 });
 
