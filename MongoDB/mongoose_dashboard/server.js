@@ -102,19 +102,23 @@ app.get('/piranha/edit/:_id', (request,response) => {
             response.redirect('/');
         });
 });
+//update
 app.post('/piranha/edit/:_id', (request,response) => {
     const which = request.params._id;
     for ([entry,data] of Object.entries(request.body)) {
         if (data != '') {
             console.log(which,entry,data);
-            let what = {entry:data};
-            Piranha.findByIdAndUpdate(which,{$set:what})
-                .then((piranha_db) => console.log(piranha_db))
+            let key = entry
+            let what = {[key]:data};
+            console.log(what)
+            Piranha.findByIdAndUpdate(which,what)
+                .then((piranha_db) => console.log(`Successfully updated`))
                 .catch(error => console.log(error));
         }
     }
     response.redirect('/');
 });
+//delete
 app.get('/piranha/delete/:_id', (request,response) => {
     const which = request.params._id;
     Piranha.remove({_id:which})
