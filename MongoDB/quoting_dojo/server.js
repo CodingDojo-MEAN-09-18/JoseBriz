@@ -9,6 +9,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const port = process.env.PORT || 8000;
 const app = express();
+
 //build app
 app
 .use(express.static(path.join(__dirname, 'static')))
@@ -22,9 +23,11 @@ app
 .use(flash())
 .set('view engine', 'ejs')
 .set('views', path.resolve('views'))
+
 //mongodb connection
 mongoose.connect('mongodb://localhost:27017/quoting_dojo', {useNewUrlParser:true});
 mongoose.connection.on('connected', () => console.log('MongoDB connected'));
+
 //schema
 const quoteSchema = new Schema({
     name: {
@@ -39,6 +42,7 @@ const quoteSchema = new Schema({
     },
 }, {timestamps: {createdAt: 'created_at', updatedAt: false}});
 const Quote = mongoose.model('Quote', quoteSchema);
+
 //routing
 app.get('/', (request,response) => {
     response.render('index');
