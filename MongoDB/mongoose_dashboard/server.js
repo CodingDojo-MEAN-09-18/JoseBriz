@@ -47,6 +47,7 @@ const eachPiranha = new Schema({
 const Piranha = mongoose.model('Piranha', eachPiranha);
 
 //routing
+    //root route - display all
 app.get('/', (request,response) => {
     Piranha.find({})
         .then(piranhas_db => {
@@ -60,9 +61,11 @@ app.get('/', (request,response) => {
             }
         });
 });
+    //create form
 app.get('/piranha/new', (request,response) => {
     response.render('new');
 });
+    //create
 app.post('/piranha/new', (request,response) => {
     Piranha.create(request.body)
         .then(piranha => {
@@ -76,6 +79,7 @@ app.post('/piranha/new', (request,response) => {
             response.redirect('/piranha/new');
         });
 });
+    //retrieve one
 app.get('/piranha/:_id', (request, response) => {
     const which = request.params._id;
     Piranha.find({_id:which})
@@ -89,6 +93,7 @@ app.get('/piranha/:_id', (request, response) => {
             response.redirect('/');
         });
 });
+    //update form
 app.get('/piranha/edit/:_id', (request,response) => {
     const which = request.params._id;
     Piranha.find({_id:which})
@@ -102,7 +107,7 @@ app.get('/piranha/edit/:_id', (request,response) => {
             response.redirect('/');
         });
 });
-//update
+    //update
 app.post('/piranha/edit/:_id', (request,response) => {
     const which = request.params._id;
     for ([entry,data] of Object.entries(request.body)) {
@@ -118,7 +123,7 @@ app.post('/piranha/edit/:_id', (request,response) => {
     }
     response.redirect('/');
 });
-//delete
+    //delete
 app.get('/piranha/delete/:_id', (request,response) => {
     const which = request.params._id;
     Piranha.remove({_id:which})

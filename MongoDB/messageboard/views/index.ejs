@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Messageboard</title>
+    <!-- bootstrap css cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- own css file -->
+    <link rel="stylesheet" href="/styles/style.css">
+    <!-- jquery link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <!-- socket link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <!-- own js file -->
+    <script type="text/javascript" src="/scripts/script.js"></script>
+</head>
+<body class='container'>
+    <div class="row">
+        <h1>The Dojo Messageboard</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h3>Write a message to get started!</h3>
+            <form id="msg_form" action="message" method="POST" class="m-1">
+                <div class="form-row m-1">
+                    <label for="name" class="col-3">Name:</label>
+                    <div class="col">
+                        <input type="text" id="name" class="form-control" name="name">
+                    </div>
+                </div>
+                <div class="form-row m-1">
+                    <label for="quote" class="col-3">Message:</label>
+                    <div class="col">
+                        <textarea class="form-control" id="message" name="message"></textarea>
+                    </div>
+                </div>
+                <div class="form-row d-flex justify-content-end m-2">
+                    <button class="post_msg_btn btn btn-outline-primary">Post Message</button>
+                </div>
+            </form>            
+        </div>
+        <div id="flash_msg" class="col-4"></div>    
+    </div>
+    <div class="row">
+        <div id="messageboard" class="col"></div>
+        <div id="flash_msg" class="col-2"></div>    
+    </div>
+</body> 
+</html>
