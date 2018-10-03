@@ -49,6 +49,12 @@ $(document).ready(function(){
             }
         });//end of $.ajax
     });//end of msg_form .submit
-    
+    $(document).on('submit','form', function(e) {
+        e.preventDefault();
+        const signature = $('signature').val();
+        const comment = $('comment').val();
+        const content = {signature:signature,comment:comment};
+        console.log(content);
+    })
 });//end of jQuery!!
 
