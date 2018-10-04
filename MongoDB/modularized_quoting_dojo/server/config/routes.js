@@ -1,4 +1,4 @@
-//require mongoose and declare Quote as model
+ //require mongoose and declare Quote as model
 const quote_controller = require('../controllers/quotes.js')
 
 //export routing with a function with callback = app

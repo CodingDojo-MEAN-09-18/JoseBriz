@@ -12,8 +12,6 @@ const models_path = path.resolve('server/models'); //starts from the process roo
 mongoose.connect('mongodb://localhost:27017/quoting_dojo', {useNewUrlParser:true});
 mongoose.connection.on('connected', () => console.log('MongoDB connected'));
 
-
-
 fs.readdirSync(models_path).forEach(file => {
     if (reg.test(file)) {
         require(path.join(models_path, file))
