@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const Quote = mongoose.model('Quote');
 
 module.exports = {
-    index: function(request,response) {
-
+    index(request,response) {
+        response.render('index')
     },
-    create: function(request,response) {
+    create(request,response) {
         Quote.create(request.body)
         .then(quote => {
             console.log('created quote:',quote);
@@ -19,7 +19,16 @@ module.exports = {
             response.redirect('/');
         })
     },
-    destroy: function(request,response) {
-
+    show(request,response) {
+        Quote.find({}).sort('-created_at')
+        .then((quotes_db) => {
+            const quotes = quotes_db;
+            response.render('quotes', {quotes});
+        })
+        .catch(error=> {
+            for (let key in error.errors) {
+                console.log(error.errors[key].message);
+            }
+        })
     }
 };

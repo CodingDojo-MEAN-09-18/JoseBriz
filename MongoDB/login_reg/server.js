@@ -1,10 +1,13 @@
 const express = require('express');
+const session = require('express-session');
+const flash = require('express-flash');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const port = process.env.PORT || 8000;
 const validator = require('validator');
+const bcrypt = require('bcryptjs');
 const app = express();
 
 //build app

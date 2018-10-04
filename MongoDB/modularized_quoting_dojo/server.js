@@ -12,6 +12,8 @@ const app = express();
 
 //build app
 app
+.set('view engine', 'ejs')
+.set('views', path.resolve('views'))
 .use(express.static(path.join(__dirname, 'static')))
 .use(bodyParser.urlencoded({extended:true}))
 .use(session({
@@ -21,30 +23,10 @@ app
     cookie: {secure:false, maxAge: 60000}
 }))
 .use(flash())
-.set('view engine', 'ejs')
-.set('views', path.resolve('views'))
 
-//mongodb connection
-mongoose.connect('mongodb://localhost:27017/quoting_dojo', {useNewUrlParser:true});
-mongoose.connection.on('connected', () => console.log('MongoDB connected'));
-
-//schema
-const quoteSchema = new Schema({
-    name: {
-        type: String,
-        required: [true, 'Please enter a name'],
-        trim: true,
-    },
-    quote: {
-        type: String,
-        required: [true, 'Please enter a quote'],
-        minlength: [10, 'Make your quote longer than 10 characters'],
-    },
-}, {timestamps: {createdAt: 'created_at', updatedAt: false}});
-const Quote = mongoose.model('Quote', quoteSchema);
-
-//routes used to be here, now just require and invoke with (app)
+//connecton to db
+require('./server/config/database');
 require('./server/config/routes.js')(app)
 
 //port connection
-app.listen(port, () => console.log(`Express listening on port ${port}`));
+app.listen(port, () => console.log(`Express listening on port ${port} for quotes app`));
