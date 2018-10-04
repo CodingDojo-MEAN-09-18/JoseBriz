@@ -2,9 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const color = require('colors');
-const mongoose = require('mongoose');
-const {Schema} = mongoose;
 const session = require('express-session');
 const flash = require('express-flash');
 const port = process.env.PORT || 8000;
