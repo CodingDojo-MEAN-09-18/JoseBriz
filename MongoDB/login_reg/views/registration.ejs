@@ -23,12 +23,30 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3>Existing User Login</h3>
-            <form id="msg_form" action="login" method="POST" class="m-1">
+            <h3>New User Registration</h3>
+            <form id="msg_form" action="/new" method="POST" class="m-1">
+                <div class="form-row m-1">
+                    <label for="first_name" class="col-3">First Name:</label>
+                    <div class="col">
+                        <input type="text" id="first_name" class="form-control" name="first_name">
+                    </div>
+                </div>
+                <div class="form-row m-1">
+                    <label for="last_name" class="col-3">Last Name:</label>
+                    <div class="col">
+                        <input type="text" id="last_name" class="form-control" name="last_name">
+                    </div>
+                </div>
                 <div class="form-row m-1">
                     <label for="email" class="col-3">Email:</label>
                     <div class="col">
                         <input type="email" id="email" class="form-control" name="email">
+                    </div>
+                </div>
+                <div class="form-row m-1">
+                    <label for="date_of_birth" class="col-3">Date Of Birth:</label>
+                    <div class="col">
+                        <input type="date" id="date_of_birth" class="form-control" name="date_of_birth">
                     </div>
                 </div>
                 <div class="form-row m-1">
@@ -37,16 +55,25 @@
                         <input type="password" id="password" class="form-control" name="password">
                     </div>
                 </div>
+                <div class="form-row m-1">
+                    <label for="confirm_password" class="col-3">Confirm Password:</label>
+                    <div class="col">
+                        <input type="confirm_password" id="confirm_password" class="form-control" name="confirm_password">
+                    </div>
+                </div>
                 <div class="form-row d-flex justify-content-end m-2">
                     <button class="post_msg_btn btn btn-outline-primary">Submit</button>
                 </div>
             </form>            
-            <h3>New user <a href="user/new">Registration</a></h3>
         </div>
-        <div id="flash_msg" class="col-4"></div>    
+        <div id="flash_msg" class="col-4">
+            <% if(messages.post_quote) { %>
+                <% for (var x of messages.post_quote) { %>
+                 <h4 style="color: pink"><%= x %></h4>
+                <% } %>
+            <% } %>
+        </div>    
     </div>
-    <div class="row">
-        
-    </div>
+    <div class="row"></div>
 </body> 
 </html>

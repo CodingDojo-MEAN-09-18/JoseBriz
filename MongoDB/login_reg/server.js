@@ -17,7 +17,7 @@ app
 .use(session({
     secret:'dojo',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {secure:false, maxAge: 60000}
 }))
 .use(flash())
@@ -90,13 +90,23 @@ userSchema.statics.validatePassword = function(password_from_form, stored_hashed
 
 const User = mongoose.model('User', userSchema);
 
-//show login and registration form
 app.get('/', (request, response) => {
-    response.render('index');
-})
+    response.redirect('/user');
+});
 
-//register new user 
+//index displays login form
+app.get('/user', (request, response) => {
+    response.render('index');
+});
+
+//go to registration form
+app.get('/user/new', (request, response) => {
+    response.render('registration');
+});
+
+//create new user 
 app.post('/new', (request,response) => {
+    console.log(request.body);
     User.create(request.body)
         .then(user => {
             //send an email to validate or confirm registration
@@ -104,7 +114,11 @@ app.post('/new', (request,response) => {
             response.redirect(`/new/${user._id}`)
         })
         .catch(error => {
-            //handle validation errors
+            for (let key in error.errors) {
+                console.log(error.errors[key].message)
+                request.flash('post_quote', error.errors[key].message);
+            }
+            response.render('registration');
         })
 });
 
@@ -123,6 +137,8 @@ app.post('/login', (request,response) => {
             return User.validatePassword(request.body.password, userInfo.password)
                 .then(() => {
                     //add session id
+                    request.session.user_id = user._id;
+                    request.session.email = user.email
                 })
         })
         .catch(error => {
