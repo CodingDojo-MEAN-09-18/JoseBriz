@@ -19,4 +19,6 @@ const piranhaSchema = new Schema({
     },
 }, {timestamps:{createdAt: true, updatedAt: true}});
 
-module.exports = mongoose.model('Piranha', piranhaSchema);
+const Piranha = mongoose.model('Piranha', piranhaSchema);
+
+module.exports = Piranha;
