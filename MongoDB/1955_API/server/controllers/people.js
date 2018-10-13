@@ -1,3 +1,5 @@
+//CONTROLLERS NOT IMPLEMENTED
+
 const mongoose = require('mongoose');
 const people = mongoose.model('people');
 

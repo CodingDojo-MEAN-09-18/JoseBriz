@@ -1,3 +1,5 @@
+//RESTFUL ROUTES NOT IMPLEMENTED
+
 const person_controller = require('../controllers/people');
 
 //export routing with callback = app
