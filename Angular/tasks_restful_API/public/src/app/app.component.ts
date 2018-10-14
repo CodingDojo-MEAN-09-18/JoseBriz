@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  // attributes
   title = 'MEAN';
+  constructor(private _httpService: HttpService) {}
+  // methods
 }
