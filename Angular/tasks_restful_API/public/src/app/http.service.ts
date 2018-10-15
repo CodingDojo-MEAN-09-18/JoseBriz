@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Task } from './tasks';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +12,8 @@ export class HttpService {
   }
 
   getTasks() {
-    const tempObservable = this._http.get('/tasks');
-    tempObservable.subscribe(data => {
-      console.log(`Our tasks are:`);
-      for (const task of data) {
-        console.log(`${task.title} - ${task.description}`);
-      }
-    });
+    const taskObservable = this._http.get('/tasks');
+    taskObservable.subscribe(data => console.log('Got the tasks', data));
   }
 
   getOneTask(id) {
