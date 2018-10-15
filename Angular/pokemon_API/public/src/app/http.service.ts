@@ -12,4 +12,8 @@ export class HttpService {
   getPokemon() {
     return this._http.get('https://pokeapi.co/api/v2/pokemon/1/');
   }
+
+  getAbility(ability) {
+    return this._http.get('https://pokeapi.co/api/v2/ability/34/');
+  }
 }

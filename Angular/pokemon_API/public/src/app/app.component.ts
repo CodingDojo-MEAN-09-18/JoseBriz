@@ -21,11 +21,16 @@ export class AppComponent implements OnInit {
     this._httpService.getPokemon()
       .subscribe(data => {
         for (const ability of data['abilities']) {
+          console.log(ability);
           this.abilities.push(ability['ability'].name);
         }
       });
     }
+
   onSelect(ability: Ability): void {
     this.selectedAbility = ability;
+    this._httpService.getAbility(ability)
+      .subscribe(data => console.log(data));
   }
+
 }

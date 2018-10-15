@@ -6,8 +6,8 @@
 </div>
 <h2>Curly:</h2>
 <ul>
-  <li *ngFor="let ability of abilities" [(ngModel)]="abilities.ability" (click)="onSelect(ability)">
+  <li *ngFor="let ability of abilities" (click)="onSelect(ability)">
     {{ability | titlecase}} !!
   </li>
 </ul>
-<app-ability></app-ability>
+<app-ability [ability]="selectedAbility"></app-ability>
