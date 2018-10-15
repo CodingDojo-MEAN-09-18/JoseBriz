@@ -23,6 +23,7 @@ app
 
 //connect to db
 require('./server/config/database');
+
 //connect to routes
 require('./server/config/routes.js')(app)
 
