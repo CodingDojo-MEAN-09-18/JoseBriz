@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
 
   // once set up, we indicate automatic steps to tak
   ngOnInit() {
-    this.getTasks();
   }
 
   getTasks() {
@@ -30,6 +29,10 @@ export class AppComponent implements OnInit {
     console.log('getting detail for', _id);
     this._httpService.getDetail(_id)
       .subscribe(data => this.task = data);
+  }
+
+  clickOne(event) {
+    console.log(event);
   }
 }
 
