@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
-const reg = new RegExp('\\/js$', 'i');
+const reg = new RegExp('\\.js$', 'i');
 //path to models
 const models_path = path.resolve('server/models');
 
@@ -11,6 +11,7 @@ mongoose.connection.on('connected', () => console.log('MongoDB connected to pira
 
 fs.readdirSync(models_path).forEach(file => {
     if (reg.test(file)) {
+        console.log('requiring file');
         require(path.join(models_path, file));
     }
 });

@@ -25,7 +25,7 @@ app
 require('./server/config/database');
 
 //connect to routes
-require('./server/config/routes.js')(app)
+require('./server/config/routes.js')(app);
 
 //port connection
 app.listen(port, () => console.log(`Express listening on port ${port} for quotes app`));

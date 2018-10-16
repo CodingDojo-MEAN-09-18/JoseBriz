@@ -32,7 +32,6 @@ module.exports = {
             });
     },
     show(request,response) {
-        app.get('/piranha/:_id', (request, response) => {
             const which = request.params._id;
             Piranha.find({_id:which})
                 .then((piranha_db) => {
@@ -44,13 +43,12 @@ module.exports = {
                     console.log(error);
                     response.redirect('/');
                 });    
-            });
     },
     edit(request,response) {
         const which = request.params._id;
         Piranha.find({_id:which})
             .then((piranha_db) => {
-                console.log(color.yellow(piranha_db));
+                console.log((piranha_db));
                 piranha = piranha_db;
                 response.render('edit', {piranha});
             })
