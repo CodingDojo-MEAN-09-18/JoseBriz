@@ -1,0 +1,23 @@
+<div>
+  <h4>Update {{task | json}}</h4>
+  <form (submit)='updateTask($event, form)' #form='ngForm'>
+    <div>
+      <label>Task Title: 
+        <input type="text" name="title" [ngModel]="task?.title" required/>
+      </label>
+    </div>
+    <div>
+      <label>Task Description: 
+        <input type="text" name="description" [ngModel]="task?.description"  required/>
+      </label>
+    </div>
+    <div>
+      <label>Task Completed?
+        <input type="checkbox" name="completed" [ngModel]="task?.completed" value='true'/>
+      </label>
+    </div>
+    <div *ngIf="form.dirty">
+    </div>
+      <button *ngIf="form.valid">Submit</button>
+    </form>
+  </div>

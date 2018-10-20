@@ -16,7 +16,7 @@ module.exports = {
         console.log(request.body);
         const task = new Task(request.body);
         task.save()
-            .then(response.redirect('/'))
+            .then(response.json(task))
             .catch(console.log)
     },
     show(request,response) {

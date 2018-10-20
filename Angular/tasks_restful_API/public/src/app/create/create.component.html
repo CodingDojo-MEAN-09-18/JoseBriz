@@ -1,0 +1,23 @@
+
+<div>
+  <h4>New Task</h4>
+  <form (submit)='createTask($event, form)' #form='ngForm'>
+    <div>
+      <label>Task Title: <p>{{new_task.title}}</p>
+        <input type="text" name="title" [(ngModel)]="new_task.title" required/>
+      </label>
+    </div>
+    <div>
+      <label>Task Description: <p>{{new_task.description}}</p>
+        <input type="text" name="description" [(ngModel)]="new_task.description" required/>
+      </label>
+    </div>
+    <div *ngIf="form.dirty">
+      {{form.value | json}}
+    </div>
+      <button *ngIf="form.valid">Submit</button>
+    </form>
+  </div>
+  
+    <!-- a way to disable the button, but is less safe than hiding it -->
+    <!-- <button [disabled]="form.invalid">Submit</button> -->
