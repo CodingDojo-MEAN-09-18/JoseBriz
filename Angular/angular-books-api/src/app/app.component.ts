@@ -43,11 +43,15 @@ export class AppComponent implements OnInit {
     console.log('new author form submitted', this.author);
     this._httpService.createAuthor(this.author)
       .subscribe(data => this.authors.push(data));
+      this.author = new Author;
+      form.reset();
   }
   submitBook(event: Event, form: NgForm): void {
     console.log('printing book form', this.book);
     this._httpService.createBook(this.book)
       .subscribe(data => this.books.push(data));
+      this.book = new Book;
+      form.reset();
   }
   getAuthor(author: Author): void {
     this.selectedAuthor = author;

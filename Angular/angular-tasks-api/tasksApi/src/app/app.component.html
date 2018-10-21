@@ -1,0 +1,56 @@
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div *ngIf="tasks">
+        <h4>Here are the tasks:</h4>
+        <ul>
+          <li *ngFor="let task of tasks" (click)="getDetail(task)">
+              {{task.title | titlecase }} <span class="stat">--completed? - {{task.completed}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div *ngIf="selectedTask">
+        <h4>Edit {{selectedTask.title | titlecase}}</h4>
+        <form (submit)="updateTask(selectedTask)" #updateForm="ngForm">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title" [(ngModel)]="selectedTask.title"/>
+          </div>
+          <div class="form-group">
+            <textarea type="text" class="form-control" name="description" [(ngModel)]="selectedTask.description"></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="compeleted" [(ngModel)]="selectedTask.completed" value="true"/>
+            <label>Completed</label>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="submit">Edit</button>
+            <button type="button" (click)="deleteTask(selectedTask._id)">Delete</button>
+          </div>
+        </form>
+      </div>        
+    </div>
+    <div class="col">
+      <div>
+        <h4>Create New Task</h4>
+        <form (submit)="createTask($event, newForm)" #newForm="ngForm">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title" [(ngModel)]="task.title" placeholder="Title" required/>{{task.title}}
+          </div>
+          <div class="form-group">
+            <textarea type="text" class="form-control" name="description" [(ngModel)]="task.description" placeholder="Description" required></textarea>{{task.description}}
+          </div>
+          <div class="d-flex justify-content-end">
+            <button type="submit" *ngIf="newForm.valid">Submit</button>
+          </div>
+        </form>    
+      </div>
+    </div>
+  </div>
+

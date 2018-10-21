@@ -144,6 +144,14 @@
               <td><input type="text" name="country" [(ngModel)]="selectedAuthor.country"/></td>
             </tr>
             <tr>
+              <th scope="row">Books:</th>
+              <td>
+                <ul>
+                  <li *ngFor="let book of selectedAuthor.books" (click)="getBook(this.book)">{{book.title}}</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
               <th scope="row">Actions:</th>
               <td><button type="submit">Update</button><button type="button" (click)="deleteAuthor(selectedAuthor._id)">Delete</button></td>
             </tr>
@@ -156,6 +164,10 @@
             <tr>
               <th scope="row">Title:</th>
               <td><input type="text" name="title" [(ngModel)]="selectedBook.title"/></td>
+            </tr>
+            <tr>
+              <th scope="row">Author:</th>
+              <td><input type="text" name="author" [(ngModel)]="selectedBook.author.last_name"/></td>
             </tr>
             <tr>
               <th scope="row">Year of Publication</th>

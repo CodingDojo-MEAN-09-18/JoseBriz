@@ -11,7 +11,7 @@ module.exports = {
     show(request, response) { 
         Book.findById(request.params.book_id)
           .populate('author')
-          .then(book => {response.json(book)})
+          .then(book => response.json(book))
           .catch(console.log);
     },
     create(request, response) { 
