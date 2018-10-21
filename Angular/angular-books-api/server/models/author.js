@@ -14,7 +14,7 @@ const authorSchema = new Schema({
         minlength: [2, 'Expected minimum of 2 characters for last name'],
         trim: true,
     },
-    country_of_origin: {
+    country: {
         type: String,
         required: [true, 'Please enter country of origin'],
         minlength: [3, 'Expected minimum of 3 characters for country name'],
@@ -22,7 +22,6 @@ const authorSchema = new Schema({
     },
     birth_date: {
         type: Date,
-        required: true,
     },
     books: [
         {

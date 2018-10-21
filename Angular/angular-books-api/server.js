@@ -5,12 +5,15 @@ const path = require('path');
 const port = process.env.PORT || 8000;
 const app = express();
 
+require('./server/config/database');
+
 app
 .use(body_parser.urlencoded({extended:true}))
 .use(body_parser.json())
-.use(express.static(path.join(__dirname, 'dist/angular-books-api')))
+.use(express.static(path.join(__dirname, 'dist/public')))  // needs to match with angular.json  "outputPath": "dist/public",
 
-require('./server/config/database');
+// check that package.json has   "main": "server.js",
+
 
 app.use(require('./server/config/routes'));
 
