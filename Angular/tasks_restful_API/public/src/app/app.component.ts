@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
 
 
 
-  // once set up, we indicate automatic steps to tak
+  // once set up, we indicate automatic steps to take
   ngOnInit() {
     this.getTasks();
   }

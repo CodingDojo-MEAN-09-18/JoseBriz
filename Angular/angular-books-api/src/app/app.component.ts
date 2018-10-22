@@ -42,33 +42,56 @@ export class AppComponent implements OnInit {
   submitAuthor(event: Event, form: NgForm): void {
     console.log('new author form submitted', this.author);
     this._httpService.createAuthor(this.author)
-      .subscribe(data => this.authors.push(data));
-      this.author = new Author;
-      form.reset();
+      .subscribe(data => {
+        this.authors.push(data);
+        this.author = new Author;
+        form.reset();
+      });
   }
   submitBook(event: Event, form: NgForm): void {
     console.log('printing book form', this.book);
     this._httpService.createBook(this.book)
-      .subscribe(data => this.books.push(data));
-      this.book = new Book;
-      form.reset();
+      .subscribe(data => {
+        this.books.push(data);
+        this.book = new Book;
+        form.reset();
+      });
   }
   getAuthor(author: Author): void {
-    this.selectedAuthor = author;
+    if (this.selectedAuthor === author) {
+      this.selectedAuthor = null;
+    } else {
+      this.selectedAuthor = author;
+    }
   }
   getBook(book: Book): void {
-    console.log('this is the book', book);
-    this.selectedBook = book;
+    if (this.selectedBook === book) {
+      this.selectedBook = null;
+    } else {
+      this.selectedBook = book;
+    }
   }
   deleteAuthor(_id: number): void {
     this.selectedAuthor = null;
     this._httpService.deleteAuthor(_id)
-      .subscribe(data => console.log('deleted author data', data));
+    .subscribe(data => {
+      for (let i = 0; i < this.authors.length; i++) {
+        if (this.authors[i]._id === data._id) {
+          this.authors.splice(i, 1);
+        }
+      }
+    });
   }
   deleteBook(_id: number): void {
     this.selectedBook = null;
     this._httpService.deleteBook(_id)
-      .subscribe(data => console.log('deleted book data', data));
+    .subscribe(data => {
+      for (let i = 0; i < this.books.length; i++) {
+        if (this.books[i]._id === data._id) {
+          this.books.splice(i, 1);
+        }
+      }
+    });
   }
   updateAuthor(author: Author): void {
     console.log('component got a request to update author', author);

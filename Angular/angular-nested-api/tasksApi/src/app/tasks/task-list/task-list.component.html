@@ -1,0 +1,17 @@
+<div class="border rounded bg-secondary p-2 text-white" *ngIf="tasks">
+    <h4>Here are the tasks:</h4>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-action" *ngFor="let task of tasks" (click)="getDetail(task)">
+          {{task.title | titlecase }} <span class="stat" *ngIf="task.completed">--completed</span>
+      </li>
+    </ul>
+  </div>
+  <div class="col">
+    <!-- Task detail -->
+    <app-task-detail [task]="selectedTask" ></app-task-detail>
+  </div>
+  <div class="col">
+    <!-- Task create -->
+    <app-task-new (newTask)="onCreate($event)"></app-task-new>
+  </div>
+

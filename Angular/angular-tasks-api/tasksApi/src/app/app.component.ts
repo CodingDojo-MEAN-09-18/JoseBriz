@@ -23,13 +23,24 @@ export class AppComponent implements OnInit {
       .subscribe(data => this.tasks = data);
   }
   getDetail(task: Task): void {
-    this.selectedTask = task;
-    console.log('getting detail', task);
+    // using a ternary operator to do the same as below:
+    // if (this.selectedTask === task) {
+    //   this.selectedTask = null;
+    // } else {
+    //   this.selectedTask = task;
+    // }
+    this.selectedTask = this.selectedTask === task ? null : task;
   }
   deleteTask(_id: number): void {
     this.selectedTask = null;
     this._httpService.deleteTask(_id)
-      .subscribe(data => console.log('deleted task', data));
+    .subscribe(data => {
+      for (let i = 0; i < this.tasks.length; i++) {
+        if (this.tasks[i]._id === data._id) {
+          this.tasks.splice(i, 1);
+        }
+      }
+    });
   }
   updateTask(task: Task): void {
     console.log('got the update request for ', task);
@@ -39,6 +50,10 @@ export class AppComponent implements OnInit {
   createTask(event: Event, form: NgForm): void {
     console.log('got request to create new task', this.task);
     this._httpService.createTask(this.task)
-      .subscribe(data => this.tasks.push(data));
+      .subscribe(data => {
+        this.tasks.push(data);
+        this.task = new Task();
+        form.reset();
+      });
   }
 }

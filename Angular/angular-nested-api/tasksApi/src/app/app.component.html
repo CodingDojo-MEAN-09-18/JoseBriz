@@ -1,0 +1,16 @@
+<div class="container">
+  <div style="text-align:center">
+    <h1>
+      Welcome to {{ title }}!
+    </h1>
+  </div>
+  <nav class="d-flex justify-content-end mb-2">
+    <button type="button" class="btn btn-secondary" (click)="showCreate()">Create New</button>
+  </nav>
+  <div class="row">
+    <div class="col">
+      <!-- Task List -->
+      <app-task-list></app-task-list>
+    </div>
+  </div>
+
