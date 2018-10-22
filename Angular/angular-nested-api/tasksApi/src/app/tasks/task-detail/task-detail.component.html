@@ -1,6 +1,6 @@
 <div class="border rounded bg-secondary p-2 text-white" *ngIf="task">
   <h4>Edit {{task.title | titlecase}}</h4>
-  <form (submit)="updateTask(task)" #updateForm="ngForm">
+  <form (submit)="updateTask(task, updateForm)" #updateForm="ngForm">
     <div class="form-group">
       <input type="text" class="form-control" name="title" [(ngModel)]="task.title"/>
     </div>

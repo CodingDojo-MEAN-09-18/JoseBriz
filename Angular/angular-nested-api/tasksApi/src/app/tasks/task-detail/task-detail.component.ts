@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { HttpService } from '../../http.service';
 
 
 import { Task } from 'src/app/models/tasks';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-task-detail',
@@ -28,10 +30,13 @@ export class TaskDetailComponent implements OnInit {
         }
       });
   }
-  updateTask(task: Task): void {
+  updateTask(task: Task, form: NgForm): void {
     console.log('got the update request for ', task);
     this._httpService.updateTask(task)
-      .subscribe(data => console.log('updated task', data));
+      .subscribe(data => {console.log('updated task', data);
+      this.task = new Task;
+      form.reset();
+    });
   }
   hideEdit(): void {
     this.task = null;
