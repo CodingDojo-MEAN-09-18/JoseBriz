@@ -34,8 +34,7 @@ export class TaskDetailComponent implements OnInit {
     console.log('got the update request for ', task);
     this._httpService.updateTask(task)
       .subscribe(data => {console.log('updated task', data);
-      this.task = new Task;
-      form.reset();
+      this.task = null;
     });
   }
   hideEdit(): void {
