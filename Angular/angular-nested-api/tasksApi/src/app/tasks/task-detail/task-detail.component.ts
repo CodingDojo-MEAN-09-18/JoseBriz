@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpService } from '../../http.service';
 
-
 import { Task } from 'src/app/models/tasks';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-task-detail',

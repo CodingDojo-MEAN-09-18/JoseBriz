@@ -4,7 +4,7 @@
       <h4>Here are the tasks:</h4>
       <ul class="list-group">
         <li class="list-group-item list-group-item-action" *ngFor="let task of tasks" (click)="getDetail(task)">
-            {{task.title | titlecase }} <span class="stat" *ngIf="task.completed">--completed</span>
+            {{task.title | titleize['a','the','for'] }} <span class="stat" *ngIf="task.completed">--completed</span>
         </li>
       </ul>
     </div>
