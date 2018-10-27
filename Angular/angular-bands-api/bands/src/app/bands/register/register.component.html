@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col">
+      <!-- Author Form -->
+      <form (submit)='createBand($event, form)' #form='ngForm'>
+        <div class="form-group row">
+          <label class="col">Band Name</label>{{band.name}}
+          <div class="col">
+            <input type="text" class="form-control" name="name" placeholder="Name of band" 
+              [(ngModel)]="band.name"
+              required
+              #name="ngModel">
+              <div *ngIf="(name.touched || name.dirty) && name.errors">
+                <div *ngIf="name.errors.required">
+                  Please enter a name of the band
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col col-form-label">Country of Origin</label>{{band.country}}
+          <div class="col">
+            <input type="text" class="form-control" name="country" placeholder="Country" 
+            [(ngModel)]="band.country"
+            required
+            #country="ngModel"
+            minlength="3">
+            <div *ngIf="(country.touched || country.dirty) && country.errors">
+              <div *ngIf="country.errors.required">
+                Please enter a country of origin
+              </div>
+              <div *ngIf="country.errors.minlength">
+                Country of origin expected to be of at least {{country.errors.minlength.requiredLength}} characters
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+            <label class="col">Photo URL</label>{{band.photo}}
+            <div class="col">
+              <input type="text" class="form-control" name="photo" placeholder="URL" 
+                [(ngModel)]="band.photo"
+                required
+                #photo="ngModel">
+                <div *ngIf="(photo.touched || photo.dirty) && photo.errors">
+                  <div *ngIf="photo.errors.required">
+                    Please enter url of the band's photo
+                  </div>
+                </div>
+            </div>
+          </div>
+        <div class="form-group row justify-content-end" *ngIf="form.valid">
+          <button class="btn btn-outline-dark">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>

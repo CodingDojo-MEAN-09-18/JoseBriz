@@ -1,0 +1,8 @@
+label {
+    color: grey;
+    font-weight: lighter;
+}
+
+::placeholder {
+    color: red;
+}

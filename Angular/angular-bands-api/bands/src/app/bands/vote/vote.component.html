@@ -1,0 +1,61 @@
+<div class="row mr-1"> 
+    <div class="col mt-5 p-3">
+  
+      <app-register (newBand)="onCreate($event)"></app-register>
+    
+    </div>
+    <div class="col" style="text-align:center">
+      <h1>
+        War of Bands
+      </h1>
+      <img width="200" alt="War of Bands Logo" src="favicon.ico">
+    </div>
+    <div id="bandList" class="col">
+      <!-- vote component develops here -->
+      <div *ngIf="bands">
+        <div class="row p-3" *ngFor="let band of bands" (click)="getDetail(band)">
+          <div class="col">
+            <h2>{{band?.name | titlecase}}</h2>
+            <h6>{{band?.country}}</h6>
+            <div>
+              <!-- vote form -->
+              <form class="form-group" (submit)="onVote(band, form)" #form="ngForm">
+                <div class="form-row p-1">
+                  <div class="col">
+                    <label>Rating</label>
+                  </div>
+                  <div class="col">
+                    <select class="align-self-end" name="rating" [ngModel]="rating">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                </div>
+                <textarea placeholder="Comment" name="comment" [ngModel]="comment"></textarea>
+                <div class="d-flex justify-content-end">
+                  <button>Submit</button>
+                </div>
+              </form>
+              <!-- end of vote form -->
+            </div>
+          </div>
+          <div class="col">
+            <img class="bandLogo p-2" src="{{band.photo}}" alt="{{band.name}}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      
+      <app-detail [band]="selectedBand"></app-detail>
+  
+    </div>
+  </div>
+  
+  
+  
