@@ -1,0 +1,23 @@
+<div id="city" *ngIf="weather">
+  <h3>{{weather.city}}</h3>
+  <ul class="d-flex justify-content-start">
+    <li *ngFor="let desc of weather.weather"><p><span>{{desc.main}}</span> ({{desc.description}})</p></li>
+  </ul>
+    <table>
+      <tr>
+        <th scope="row">Humidity</th><td>{{weather.main.humidity}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Pressure</th><td>{{weather.main.pressure}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Temperature</th><td>{{weather.main.temp}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Temp Max</th><td>{{weather.main.temp_max}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Temp Min</th><td>{{weather.main.temp_min}}</td>
+      </tr>
+    </table> 
+</div>

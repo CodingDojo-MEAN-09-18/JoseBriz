@@ -1,0 +1,19 @@
+#city ul {
+    list-style-type: circle;
+    overflow: none;
+}
+
+#city li {
+    display: inline-block;
+    padding: 0 1rem 0 1rem;
+    vertical-align: middle;
+}
+
+#city span {
+    font-style: italic;
+    color: gray;
+}
+
+#city th {
+    margin: 0 3rem 0 0;
+}
