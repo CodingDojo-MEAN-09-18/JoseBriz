@@ -2,8 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { HttpService } from '../http.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { City, Weather } from '../models';
+import { Weather } from '../models';
 
 @Component({
   selector: 'app-city',
@@ -16,7 +17,8 @@ export class CityComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
     ) { }
 
   ngOnInit() {

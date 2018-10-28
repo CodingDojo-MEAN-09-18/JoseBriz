@@ -1,7 +1,9 @@
 <nav>
   <ul class="d-flex justify-content-between">
-    <li *ngFor="let city of cities" (click)="getCity(city)" routerLink="/city/{{city.id}}">
-      <p>{{city.name}}</p>
+    <li *ngFor="let city of cities">
+      <a routerLink="/city/{{city.id}}">
+        <p>{{city.name}}</p>
+      </a>
     </li>
   </ul>
 </nav>
