@@ -3,7 +3,7 @@ import { HttpService } from '../http.service';
 
 import { ActivatedRoute } from '@angular/router';
 
-import { Weather } from '../models';
+import { City, Weather } from '../models';
 
 @Component({
   selector: 'app-city',
@@ -21,6 +21,7 @@ export class CityComponent implements OnInit {
 
   ngOnInit() {
     this.getCity();
+
   }
   getCity(): void {
     const id = +this.route.snapshot.paramMap.get('id');
