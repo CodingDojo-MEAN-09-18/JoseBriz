@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 const Author = mongoose.model('Author');
 
-const idGen = function() {
-    min = 1;
-    max = 1000;
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
 const exists = function(v) {
     const name = v.name.toLowerCase();
     return Author.findOne({name:name})
@@ -29,9 +23,7 @@ module.exports = {
             if (result) {
                 console.log('author', result.name + " already exists")
             } else {
-                const id = idGen();
-                const name = request.body.name;
-                const author = new Author({id: id, name: name});
+                const author = new Author(request.body);
                 author.save()
                     .then(response.json(author))
                     .catch(console.log)
@@ -40,7 +32,7 @@ module.exports = {
     },
     show(request,response) {
         console.log(request.params);
-        Author.findById(request.params.id)
+        Author.findById(request.params._id)
             .then(author_db => {
                 const author = author_db;
                 console.log('got this one from DB', author);
@@ -49,15 +41,15 @@ module.exports = {
             .catch(console.log)    
     },
     update(request,response) {
-        console.log(request.params.id, request.body);
-        Author.findByIdAndUpdate(request.params.id, request.body, {new:true})
-            .then(response.json(author))
+        console.log(request.params._id, request.body);
+        Author.findByIdAndUpdate(request.params._id, request.body, {new:true})
+            .then(author => response.json(author))
             .catch(console.log)    
     },
     destroy(request,response) {
-        console.log(request.params.id, request.body)
-        Author.findByIdAndDelete(request.params.id)
-            .then(response.json(author))
+        console.log(request.params._id, request.body)
+        Author.findByIdAndDelete(request.params._id)
+            .then(author => response.json(author))
             .catch(console.log)    
     },
 }

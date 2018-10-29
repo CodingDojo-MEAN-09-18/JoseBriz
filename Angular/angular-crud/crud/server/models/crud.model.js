@@ -6,9 +6,6 @@ function toLower(v) {
 }
 
 const authorSchema = new Schema ({
-    id: {
-        type: Number
-    },
     name: {
         type: String,
         required: [true, "Please add author name"],

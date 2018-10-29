@@ -25,9 +25,17 @@ export class HttpService {
     return this.http.post<Author>('/cruds', author);
   }
 
-  getAuthor(id: number): Observable<Author> {
-    console.log('httpService will go to DB and get detail for', id);
-    return this.http.get<Author>(`/cruds/${id}`);
+  getAuthor(_id: string): Observable<Author> {
+    console.log('httpService will go to DB and get detail for', _id);
+    return this.http.get<Author>(`/cruds/${_id}`);
+  }
+
+  editAuthor(author: Author): Observable<Author> {
+    return this.http.put<Author>(`/cruds/${author._id}`, author);
+  }
+
+  deleteAuthor(_id: string): Observable<Author> {
+    return this.http.delete<Author>(`/cruds/${_id}`);
   }
 
 }

@@ -1,3 +1,20 @@
-<p>
-  detail works!
-</p>
+<div class="row">
+  <div class="col">
+    <form (submit)="editAuthor(author)">
+      <h1>
+        <input type="text" name="name" [(ngModel)]="author.name" placeholder="{{author.name}}"/>
+        {{ author?.name | titlecase }}
+      </h1>
+      <p>created: 
+        {{ author?.created_at | date:'short' }}
+      </p>
+      <p>updated:
+        {{ author?.updated_at | date:'short' }}
+      </p>
+      <button type="submit">Edit</button>
+      <div (click)="manageEvent($event)">
+        <button (click)="deleteAuthor(author._id)">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
