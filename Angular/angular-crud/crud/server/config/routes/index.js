@@ -1,6 +1,6 @@
-const crud_router = require('./crud.routes');
+const author_router = require('./author.routes');
 
 const router = require('express').Router();
 
 module.exports = router
-  .use('cruds', crud_router);
+  .use('/authors', author_router);

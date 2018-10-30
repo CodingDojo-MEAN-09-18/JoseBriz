@@ -10,10 +10,14 @@ import { Author } from './models';
 export class HttpService {
   authors$ = new BehaviorSubject<Author[]>([]);
 
-  constructor(private http: HttpClient) { }
+  private readonly base = '/api/authors';
+
+  constructor(
+    private http: HttpClient,
+    ) { }
 
   getAuthors(): Observable<Author[]> {
-    this.http.get<Author[]>('/cruds')
+    this.http.get<Author[]>(this.base)
       .subscribe(data => {
         this.authors$.next(data);
       });
@@ -22,20 +26,20 @@ export class HttpService {
 
   createAuthor(author: Author): Observable<Author> {
     console.log('httpService has received this data', author);
-    return this.http.post<Author>('/cruds', author);
+    return this.http.post<Author>(this.base, author);
   }
 
   getAuthor(_id: string): Observable<Author> {
     console.log('httpService will go to DB and get detail for', _id);
-    return this.http.get<Author>(`/cruds/${_id}`);
+    return this.http.get<Author>(`${this.base}/${_id}`);
   }
 
   editAuthor(author: Author): Observable<Author> {
-    return this.http.put<Author>(`/cruds/${author._id}`, author);
+    return this.http.put<Author>(`${this.base}/${author._id}`, author);
   }
 
   deleteAuthor(_id: string): Observable<Author> {
-    return this.http.delete<Author>(`/cruds/${_id}`);
+    return this.http.delete<Author>(`${this.base}/${_id}`);
   }
 
 }

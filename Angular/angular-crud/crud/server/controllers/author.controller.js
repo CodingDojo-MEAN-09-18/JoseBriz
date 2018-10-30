@@ -8,6 +8,7 @@ const exists = function(v) {
 
 module.exports = {
     index(request, response) {
+        console.log('got to index');
         Author.find({})
         .then(authors_db => {
             const authors = authors_db;
@@ -18,19 +19,20 @@ module.exports = {
         })
     },
     create(request,response) {
+        console.log('got to create')
         console.log(request.body);
         exists(request.body).then(result => {
             if (result) {
                 console.log('author', result.name + " already exists")
             } else {
-                const author = new Author(request.body);
-                author.save()
-                    .then(response.json(author))
-                    .catch(console.log)
+                Author.create(request.body)
+                    .then(data => response.json(data))
+                    .catch(error => response.status(406).json(error.message))
             }
         })
     },
     show(request,response) {
+        console.log('got to show')
         console.log(request.params);
         Author.findById(request.params._id)
             .then(author_db => {
@@ -41,12 +43,14 @@ module.exports = {
             .catch(console.log)    
     },
     update(request,response) {
+        console.log('got to update')
         console.log(request.params._id, request.body);
         Author.findByIdAndUpdate(request.params._id, request.body, {new:true})
             .then(author => response.json(author))
-            .catch(console.log)    
+            .catch(error => response.status(406).json(error.message))    
     },
     destroy(request,response) {
+        console.log('got to delete')
         console.log(request.params._id, request.body)
         Author.findByIdAndDelete(request.params._id)
             .then(author => response.json(author))

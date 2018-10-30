@@ -9,7 +9,7 @@ const authorSchema = new Schema ({
     name: {
         type: String,
         required: [true, "Please add author name"],
-        minlength: [3, 'Make author name longer than 3 characters'],
+        minlength: [8, 'Make author name longer than 8 characters'],
         trim: true,
         set: toLower
     },

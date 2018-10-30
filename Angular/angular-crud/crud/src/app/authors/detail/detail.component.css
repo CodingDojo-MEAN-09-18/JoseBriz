@@ -1,3 +1,8 @@
 div.col {
     background-color: yellow;
 }
+
+button {
+    background: none;
+    border-radius: 0.2rem;
+}

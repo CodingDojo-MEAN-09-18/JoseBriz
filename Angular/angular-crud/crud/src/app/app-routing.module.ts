@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthorResolve } from './resolvers';
 
-import { AllComponent, NewComponent, DetailComponent } from './authors';
+import { LandingComponent, AllComponent, NewComponent, DetailComponent, NotFoundComponent } from './authors';
 
 const routes: Routes = [
-  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '', redirectTo: 'authors', pathMatch: 'full'},
   {path: 'authors', children: [
+    {path: '', component: LandingComponent},
     {path: 'all', component: AllComponent},
     {path: 'new', component: NewComponent},
-    {path: 'all/:_id', component: DetailComponent}
+    {path: 'all/:_id', component: DetailComponent, resolve: {author: AuthorResolve}},
+    {path: '**', component: NotFoundComponent},
   ]}
 ];
 

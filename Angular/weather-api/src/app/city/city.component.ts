@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { Weather } from '../models';
 
@@ -18,23 +18,19 @@ export class CityComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     private route: ActivatedRoute,
-    private location: Location
     ) { }
 
   ngOnInit() {
-    this.getCity();
-
-  }
-  getCity(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.httpService.getCity(id)
-      .subscribe(data => {
-        this.weather = {
-          city: data['name'],
-          main: data['main'],
-          weather: data['weather']
-        };
-        console.log(this.weather);
-      });
+    this.route.paramMap.pipe(
+      map(params => params.get('id')),
+      switchMap(id => this.httpService.getCity(id)))
+        .subscribe(data => {
+          this.weather = {
+            city: data['name'],
+            main: data['main'],
+            weather: data['weather']
+          };
+          console.log(this.weather);
+        });
   }
 }

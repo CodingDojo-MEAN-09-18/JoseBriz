@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col">
     <ul>
-      <li *ngFor="let author of authors"><a routerLink="{{author._id}}">{{author.name | titlecase}}</a></li>
+      <li *ngFor="let author of authors"><a [routerLink]='[author._id]'>{{author.name | titlecase}}</a></li>
     </ul>
   </div>
 </div>

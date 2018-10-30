@@ -11,6 +11,13 @@ app
 .use(body_parser.urlencoded({extended:true}))
 .use(body_parser.json())
 .use(express.static(path.join(__dirname, 'dist/public')))
-.use(require('./server/config/routes/crud.routes'));
+.use((request, response, next) => {
+    console.log(request.url)
+    next();
+})
+.use('/api', require('./server/config/routes'))
+.use((request, response) => {
+    response.sendFile(path.resolve('dist/public/index.html'));
+})
 
 app.listen(port, () => console.log(`Express listening on port ${port}`));
