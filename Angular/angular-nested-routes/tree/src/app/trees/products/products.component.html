@@ -1,0 +1,13 @@
+<h2>Products Component</h2>
+<div class="row">
+    <div class="col">
+        <ul>
+            <li><a [routerLink]='["details", 1]'>Details</a></li>
+            <li><a [routerLink]='["brand", "generic"]'>Brand</a></li>
+            <li><a [routerLink]='["category", "cat"]'>Category</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>

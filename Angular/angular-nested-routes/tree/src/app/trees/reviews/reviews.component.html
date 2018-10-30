@@ -1,0 +1,13 @@
+<h2>Reviews Component</h2>
+<div class="row">
+    <div class="col">
+        <ul>
+            <li><a [routerLink]='["details", 1]'>Details</a></li>
+            <li><a [routerLink]='["author", 1]'>Author</a></li>
+            <li><a [routerLink]='["all", 1]'>All</a></li>
+        </ul>
+    </div>
+    <div class="col">
+        <router-outlet></router-outlet>
+    </div>
+</div>
