@@ -12,6 +12,8 @@ import { LandingComponent } from './landing/landing.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpService } from './http.service';
 
+import { ProductResolve } from './resolvers';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { HttpService } from './http.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [HttpService],
+  providers: [HttpService, ProductResolve],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

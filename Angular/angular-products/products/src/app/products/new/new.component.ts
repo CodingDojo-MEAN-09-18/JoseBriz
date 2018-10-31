@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpService } from '../../http.service';
+import { Router } from '@angular/router';
 
 import { Product } from 'src/app/models/product';
 
@@ -14,6 +15,7 @@ export class NewComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -24,8 +26,7 @@ export class NewComponent implements OnInit {
     this.httpService.createProduct(form.value)
       .subscribe(data => {
         console.log('created product', data);
-        this.product = new Product();
-        form.reset();
+        this.router.navigateByUrl('products');
       });
   }
 }

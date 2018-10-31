@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
 
 import { HttpService } from '../../http.service';
 
@@ -24,5 +23,20 @@ export class EditComponent implements OnInit {
   ngOnInit() {
     this.product = this.route.snapshot.data.product as Product;
   }
-
+  editProduct(product: Product): void {
+    console.log('got request to edit product', product);
+    this.httpService.editProduct(product)
+      .subscribe(data => {
+        this.router.navigateByUrl('products');
+      });
+  }
+  deleteProduct(_id: string): void {
+    this.httpService.deleteProduct(_id)
+      .subscribe(data => {
+        this.router.navigateByUrl('products');
+      });
+  }
+  manageEvent(event: Event): void {
+    event.stopPropagation();
+  }
 }

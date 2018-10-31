@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProductResolve } from './resolvers';
 
 import {
   AllComponent,
@@ -11,8 +12,9 @@ import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   {path: '', component: LandingComponent},
-  {path: 'products', component: AllComponent, children: [
-    {path: 'show/:id', component: EditComponent},
+  {path: 'products', children: [
+    {path: '', component: AllComponent},
+    {path: 'edit/:id', component: EditComponent, resolve: {product: ProductResolve}},
   ]},
   {path: 'new', component: NewComponent},
   {path: '**', component: NotFoundComponent}

@@ -1,7 +1,13 @@
-<ul>
-  <li *ngFor="let product of products">
-    <a [routerLink]='["show", product._id]'>{{product.title}}</a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div class="d-flex">
+  <div class="product" *ngFor="let product of products">
+    <img src="{{product.image}}">
+    <h5>{{product.title | titlecase}}</h5>
+    <h5>{{product.price | currency}}</h5>
+    <div (click)="manageEvent($event)">
+      <button [routerLink]='["edit", product._id]'>Edit</button>
+      <button (click)="deleteProduct(product._id)">Delete</button>
+    </div>
+  </div>
+</div>
+
 

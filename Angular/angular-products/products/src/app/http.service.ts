@@ -26,8 +26,15 @@ export class HttpService {
     console.log('service got request to create product', product);
     return this.http.post<Product>(this.base, product);
   }
-  showProduct(id: string): Observable<Product> {
-    console.log('service got request to retrieve product', id);
-    return this.http.get<Product>(`${this.base}/${id}`);
+  showProduct(_id: string): Observable<Product> {
+    console.log('service got request to retrieve product', _id);
+    return this.http.get<Product>(`${this.base}/${_id}`);
+  }
+  editProduct(product: Product): Observable<Product> {
+    console.log('service got request to edit product', product);
+    return this.http.put<Product>(`${this.base}/${product._id}`, product);
+  }
+  deleteProduct(_id: string): Observable<Product> {
+    return this.http.delete<Product>(`${this.base}/${_id}`);
   }
 }

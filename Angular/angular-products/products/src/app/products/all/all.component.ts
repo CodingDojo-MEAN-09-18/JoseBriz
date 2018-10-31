@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../http.service';
+import { Router } from '@angular/router';
 
 import { Product } from '../../models/product';
 
@@ -13,6 +14,7 @@ export class AllComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -24,5 +26,17 @@ export class AllComponent implements OnInit {
         this.products = data;
       });
   }
-
+  deleteProduct(_id: string): void {
+    this.httpService.deleteProduct(_id)
+      .subscribe(data => {
+        for (let i = 0; i < this.products.length; i++) {
+          if (this.products[i]._id === data._id) {
+            this.products.splice(i, 1);
+          }
+        }
+      });
+  }
+  manageEvent(event: Event): void {
+    event.stopPropagation();
+  }
 }
