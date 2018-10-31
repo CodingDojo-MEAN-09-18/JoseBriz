@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import * as fromTrees from './trees';
 import { NavComponent } from './nav/nav.component';
+import * as fromTrees from './trees';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ...fromTrees.components,
     NavComponent,
+    ...fromTrees.components,
   ],
   imports: [
     BrowserModule,
