@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpService } from '../../http.service';
 import { Router } from '@angular/router';
 
+import { HttpService } from '../../http.service';
+import { MessageService } from 'src/app/message.service';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -16,6 +17,7 @@ export class NewComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     private router: Router,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,8 @@ export class NewComponent implements OnInit {
       .subscribe(data => {
         console.log('created product', data);
         this.router.navigateByUrl('products');
+      }, error => {
+        this.messageService.add(error.error);
       });
   }
 }

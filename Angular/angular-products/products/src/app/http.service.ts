@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { MessageService } from './message.service';
 
 import { Product } from './models/product';
 
@@ -13,6 +14,7 @@ export class HttpService {
 
   constructor(
     private http: HttpClient,
+    private messageService: MessageService,
   ) { }
 
   getProducts(): Observable<Product[]> {

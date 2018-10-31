@@ -35,6 +35,7 @@ export class HttpService {
   }
 
   editAuthor(author: Author): Observable<Author> {
+    console.log('httpService got request to update Author', author);
     return this.http.put<Author>(`${this.base}/${author._id}`, author);
   }
 

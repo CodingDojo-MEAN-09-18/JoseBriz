@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpService } from './http.service';
 
 import { ProductResolve } from './resolvers';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductResolve } from './resolvers';
     ...fromProducts.components,
     LandingComponent,
     NotFoundComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,7 @@
       [(ngModel)]="product.image"/>
     </div>
   </div>
+  <button (click)="goBack()">Go Back</button>
   <div *ngIf="form.valid" class="col d-flex justify-content-end" (click)="manageEvent($event)">
     <button type="submit">Edit</button>
     <button (click)="deleteProduct(product._id)">Delete</button>

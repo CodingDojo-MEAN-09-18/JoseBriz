@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { HttpService } from '../../http.service';
+import { MessageService } from 'src/app/message.service';
 
 import { Product } from '../../models/product';
 
@@ -18,6 +19,8 @@ export class EditComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: HttpService,
     private router: Router,
+    private messageService: MessageService,
+    private location: Location,
   ) { }
 
   ngOnInit() {
@@ -28,6 +31,8 @@ export class EditComponent implements OnInit {
     this.httpService.editProduct(product)
       .subscribe(data => {
         this.router.navigateByUrl('products');
+      }, error => {
+        this.messageService.add(error.error);
       });
   }
   deleteProduct(_id: string): void {
@@ -38,5 +43,8 @@ export class EditComponent implements OnInit {
   }
   manageEvent(event: Event): void {
     event.stopPropagation();
+  }
+  goBack(): void {
+    this.location.back();
   }
 }
