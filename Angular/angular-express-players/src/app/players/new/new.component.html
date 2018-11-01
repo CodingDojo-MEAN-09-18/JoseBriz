@@ -1,0 +1,27 @@
+<form (submit)="createPlayer($event, form)" #form="ngForm">
+  <div class="d-flex justify-content-between mb-3" (click)="manageEvent($event)">
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="goBack()">Go Back</button>
+    <button type="button" class="btn btn-outline-dark btn-sm" (click)="clearForm(form)">Clear</button>
+  </div>
+    <div class="form-group row">
+      <label class="col-4 form-label">Name</label>
+      <div class="col">
+        <input type="text" class="form-control" name="name" 
+        #name="ngModel"
+        [ngModel]="player.name"
+        minlength="4"
+        required/>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-4 form-label">Preferred Position</label>
+      <div class="col">
+        <input type="text" class="form-control" name="position"
+        [ngModel]="player.position"/>
+      </div>
+    </div>
+    <div *ngIf="form.valid" class="col d-flex justify-content-end" (submit)="manageEvent($event)">
+      <button type="submit" class="btn btn-outline-dark btn-sm">Create</button>
+    </div>
+  </form>
+  

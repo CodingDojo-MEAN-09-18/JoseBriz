@@ -1,0 +1,8 @@
+div.col {
+    color: red;
+    font-size: larger;
+    text-align: center;
+    border: 1px solid red;
+    border-radius: 1rem;
+    background-color: yellow;
+}

@@ -16,8 +16,8 @@ app
     next();
 })
 .use('/api', require('./server/config/routes'))
-// .use((request, response) => {
-//     response.sendFile(path.resolve('dist/public/index.html'));
-// })
+.use((request, response) => {
+    response.sendFile(path.resolve('dist/public/index.html'));
+})
 
 app.listen(port, () => console.log(`Express listening on port ${port}`));
