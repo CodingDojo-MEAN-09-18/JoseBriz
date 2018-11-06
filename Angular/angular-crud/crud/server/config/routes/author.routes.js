@@ -1,4 +1,4 @@
-const author_controller = require('../../controllers/author.controller');
+const { author_controller } = require('../../controllers');
 
 const router = require('express').Router()
 

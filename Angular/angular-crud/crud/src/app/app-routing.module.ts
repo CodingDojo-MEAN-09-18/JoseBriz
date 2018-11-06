@@ -3,16 +3,40 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthorResolve } from './resolvers';
 
 import { LandingComponent, AllComponent, NewComponent, DetailComponent, NotFoundComponent } from './authors';
+import { HomeComponent, LoginComponent, RegisterComponent } from './home';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'authors', pathMatch: 'full'},
-  {path: 'authors', children: [
-    {path: '', component: LandingComponent},
-    {path: 'all', component: AllComponent},
-    {path: 'new', component: NewComponent},
-    {path: 'all/:_id', component: DetailComponent, resolve: {author: AuthorResolve}},
-    {path: '**', component: NotFoundComponent},
-  ]}
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'authors',
+    children: [{
+      path: '',
+      component: LandingComponent
+    },
+    {
+      path: 'all',
+      component: AllComponent
+    },
+    {
+      path: 'new',
+      component: NewComponent,
+      canActivate: [AuthGuard]
+    },
+    {
+      path: 'all/:_id',
+      component: DetailComponent,
+      resolve: {author: AuthorResolve},
+      canActivate: [AuthGuard]
+    },
+    {
+      path: '**',
+      component: NotFoundComponent
+    },
+  ]},
 ];
 
 @NgModule({

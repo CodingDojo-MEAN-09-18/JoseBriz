@@ -16,8 +16,11 @@
     <div class="form-group row">
       <label class="col-4 form-label">Preferred Position</label>
       <div class="col">
-        <input type="text" class="form-control" name="position"
-        [ngModel]="player.position"/>
+        <!-- <input type="text" class="form-control" name="position"
+        [ngModel]="player.position"/> -->
+        <select>
+          <option *ngFor="let position of player.position" value="{{position}}">{{position}}</option>
+        </select>
       </div>
     </div>
     <div *ngIf="form.valid" class="col d-flex justify-content-end" (submit)="manageEvent($event)">

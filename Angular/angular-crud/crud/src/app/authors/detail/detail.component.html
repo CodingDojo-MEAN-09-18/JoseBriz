@@ -3,7 +3,7 @@
     <form (submit)="editAuthor(author)">
       <h1>
         {{ author?.name | titlecase }}
-        <input type="text" name="name" [ngModel]="author?.name" placeholder="{{author?.name}}"/>
+        <input type="text" name="name" [(ngModel)]="author.name" placeholder="{{author?.name}}"/>
       </h1>
       <p>created: 
         {{ author?.created_at | date:'short' }}

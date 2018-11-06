@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 // import { MessageService } from 'src/app/message.service';
 
 import { Player } from '../../models/player';
+import { Positions } from '../../models/positions';
 import { HttpService } from 'src/app/http.service';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-new',

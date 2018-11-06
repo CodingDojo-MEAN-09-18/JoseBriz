@@ -6,14 +6,33 @@ import * as fromStatus from './status';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', children: [
-    {path: 'players', component: fromPlayers.PlayersComponent, children: [
-      {path: 'list', component: fromPlayers.ListComponent},
-      {path: 'new', component: fromPlayers.NewComponent},
-    ]},
-    {path: 'status', component: fromStatus.StatusComponent},
-    {path: '**', component: NotFoundComponent}
-  ]}
+  {
+    path: '',
+    redirectTo: 'players',
+    pathMatch: 'full',
+  },
+  {
+    path: 'players',
+    component: fromPlayers.PlayersComponent,
+    children: [
+      {
+        path: 'list',
+        component: fromPlayers.ListComponent,
+      },
+      {
+        path: 'new',
+        component: fromPlayers.NewComponent,
+      }
+    ],
+  },
+  {
+    path: 'status',
+    component: fromStatus.StatusComponent,
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
