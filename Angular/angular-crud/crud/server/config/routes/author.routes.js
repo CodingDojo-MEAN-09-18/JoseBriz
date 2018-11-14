@@ -1,6 +1,6 @@
 const { author_controller } = require('../../controllers');
 
-const router = require('express').Router()
+const router = require('express').Router();
 
 module.exports = router
 .get('/', author_controller.index)

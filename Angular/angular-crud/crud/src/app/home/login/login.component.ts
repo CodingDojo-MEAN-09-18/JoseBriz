@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(user: User): void {
     this.auth.login(user)
-      .subscribe(() => {
-        console.log('successful login', user);
+      .subscribe(data => {
+        console.log('successful login', data);
         this.router.navigateByUrl('authors');
       }, error => {
         console.log('an error', error);

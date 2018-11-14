@@ -1,7 +1,7 @@
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const express = require('express');
+const session = require('express-session');
 const body_parser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const path = require('path');
 
@@ -48,6 +48,6 @@ app
     next();
 })
 .use('/api', require('./server/config/routes'))
-.use(require('./server/config/routes/catch-all.route'))
+.use(require('./server/config/routes/catch-all.route'));
 
 app.listen(port, () => console.log(`Express listening on port ${port}`));

@@ -3,7 +3,7 @@ const { Http } = require('@status/codes');
 
 module.exports = {
     login(request, response) {
-        console.log('request.body');
+        console.log('this is the request', request.body);
         const { username, password } = request.body;
         User.findOne({username})
           .then(user => {
@@ -19,7 +19,7 @@ module.exports = {
           })
           .catch(() => {
               response.status(Http.Unauthorized).json('Email/password combination not valid');
-          })
+          });
     },
     logout(request, response) {
         //destroy our session

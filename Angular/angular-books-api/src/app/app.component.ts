@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
       .subscribe(data => {
         this.authors.push(data);
         this.author = new Author;
-        form.reset();
+        // form.reset();
       });
   }
   submitBook(event: Event, form: NgForm): void {
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
       .subscribe(data => {
         this.books.push(data);
         this.book = new Book;
-        form.reset();
+        // form.reset();
       });
   }
   getAuthor(author: Author): void {
