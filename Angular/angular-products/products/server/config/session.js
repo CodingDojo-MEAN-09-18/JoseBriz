@@ -1,7 +1,7 @@
 const session = require('express-session');
 const cookie_parser = require('cookie-parser');
 
-export const sessionConfig = {
+module.exports = sessionConfig = {
     saveUninitialized: true,
     secret: 'secretProduct',
     resave: false,

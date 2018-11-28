@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services';
 import { User } from '../../models';
-import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-register',

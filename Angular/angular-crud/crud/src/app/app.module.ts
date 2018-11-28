@@ -15,11 +15,9 @@ import { DetailComponent } from './authors/detail/detail.component';
 import { NotFoundComponent } from './authors/not-found/not-found.component';
 import { LandingComponent } from './authors/landing/landing.component';
 import { MessagesComponent } from './messages/messages.component';
+import { HomeComponent, LoginComponent, RegisterComponent } from './home/';
 
 import { AuthorResolve } from './resolvers';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './home/login/login.component';
-import { RegisterComponent } from './home/register/register.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -32,10 +30,10 @@ import { AuthGuard } from './auth.guard';
     DetailComponent,
     NotFoundComponent,
     LandingComponent,
-    MessagesComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
